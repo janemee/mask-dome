@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 
 /**
  * String 工具类
- *
  */
 public class StringUtil extends StringUtils {
 
@@ -126,7 +125,6 @@ public class StringUtil extends StringUtils {
     }
 
 
-
     /**
      * 判断是否为中文字符
      *
@@ -226,8 +224,6 @@ public class StringUtil extends StringUtils {
     }
 
 
-
-
     /**
      * 获取文本中的http/https链接地址
      *
@@ -279,9 +275,9 @@ public class StringUtil extends StringUtils {
         if (StringUtil.isBlank(name)) {
             return "";
         } else if (name.length() <= 2) {
-            return name.substring(1) + getMaskStrByLength( 1);
+            return name.substring(1) + "*";
         } else {
-            return getMaskStr(name,1,1);
+            return getMaskStr(name, 1, 1);
         }
     }
 
@@ -289,13 +285,17 @@ public class StringUtil extends StringUtils {
         if (StringUtil.isBlank(str)) {
             return "";
         }
+        int index = str.length() - (last + first);
         StringBuffer sb = new StringBuffer(str.substring(0, last));
-        sb.append(getMaskStrByLength(str.length() - (last + first)));
-        sb.append(str.substring(str.length() - first, str.length()));
+        sb.append(getMaskStrByLength(index));
+        sb.append(str.substring(str.length() - first));
         return sb.toString();
     }
 
     public static String getMaskStrByLength(Integer index) {
+        if (index <= 0) {
+            return "";
+        }
         StringBuffer maskStr = new StringBuffer();
         for (int i = 0; i < index; i++) {
             maskStr.append("*");

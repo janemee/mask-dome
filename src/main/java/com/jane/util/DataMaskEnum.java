@@ -3,6 +3,10 @@ package com.jane.util;
 
 import java.util.function.Function;
 
+/**
+ * @author Jiazngxiaobai
+ */
+
 public enum DataMaskEnum {
 
     /**

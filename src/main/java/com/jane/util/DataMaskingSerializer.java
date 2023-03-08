@@ -12,6 +12,9 @@ import com.fasterxml.jackson.databind.ser.ContextualSerializer;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * @author Jiazngxiaobai
+ */
 public final class DataMaskingSerializer extends JsonSerializer<String> implements ContextualSerializer {
 
     private DataMaskEnum dataMaskEnum;
